@@ -109,14 +109,18 @@ public class PatientRoutingService implements PatientDAO {
 		try {
 			try (PreparedStatement ps = con.prepareStatement(QUERY_CRITICAL)) {
 				ps.setInt(1, patientId);
-				if (ps.executeQuery().next()) {
-					return true;
+				try (ResultSet rs = ps.executeQuery()) {
+					if (rs.next() && rs.getInt(1) > 0) {
+						return true;
+					}
 				}
 			}
 			try (PreparedStatement ps = con.prepareStatement(QUERY_GENERAL)) {
 				ps.setInt(1, patientId);
-				if (ps.executeQuery().next()) {
-					return true;
+				try (ResultSet rs = ps.executeQuery()) {
+					if (rs.next() && rs.getInt(1) > 0) {
+						return true;
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -124,5 +128,4 @@ public class PatientRoutingService implements PatientDAO {
 		}
 		return false;
 	}
-
 }

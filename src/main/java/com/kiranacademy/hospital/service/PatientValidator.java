@@ -22,7 +22,7 @@ public class PatientValidator {
 			error.add("patient_name must not be null, blank or shorter than 3 characters");
 		}
 
-		if (patient.getAge() < 0 && patient.getAge() > 120) {
+		if (patient.getAge() < 0 || patient.getAge() > 120) {
 			error.add("age must be between 0 and 120");
 		}
 
@@ -42,7 +42,7 @@ public class PatientValidator {
 			error.add("condition_status must be Critical, Moderate or Stable");
 		}
 
-		if (patient.getTriage_score() < 1 && patient.getTriage_score() > 10) {
+		if (patient.getTriage_score() < 1 || patient.getTriage_score() > 10) {
 			error.add("triage_score must be between 1 and 10");
 		}
 
