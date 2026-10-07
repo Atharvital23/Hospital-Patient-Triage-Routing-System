@@ -19,13 +19,11 @@ public class PatientRoutingService implements PatientDAO {
 
 	private PreparedStatement preparedStatement = null;
 	private Statement statement = null;
-//	private ResultSet resultSet = null;
 
 	private static final String GET_PENDING_RECORDS = "SELECT * FROM `hospital_patient_intake` WHERE `transfer_status`='PENDING'";
 	private static final String INSERT_CRITICAL = "INSERT INTO `critical_care_patients` (source_patient_id, patient_name, age, disease, admission_type, condition_status, triage_score, doctor_name) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String INSERT_GENERAL = "INSERT INTO `general_care_patients` (source_patient_id, patient_name, age, disease, admission_type, condition_status, triage_score, doctor_name) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String MARK_PROCESSED = "UPDATE `hospital_patient_intake` SET `transfer_status` = 'PROCESSED', `processed_at` = ? WHERE `patient_id` = ?";
-//	private static final String GET_PATIENT_BY_ID = "SELECT * FROM `hospital_patient_intake` WHERE `patient_id`=?";
 	private static final String QUERY_CRITICAL = "SELECT 1 FROM critical_care_patients WHERE `source_patient_id` = ?";
 	private static final String QUERY_GENERAL = "SELECT 1 FROM general_care_patients WHERE `source_patient_id` = ?";
 
@@ -68,7 +66,6 @@ public class PatientRoutingService implements PatientDAO {
 			preparedStatement.setString(6, patient.getConditionStatus().name());
 			preparedStatement.setInt(7, patient.getTriage_score());
 			preparedStatement.setString(8, patient.getDoctor_name());
-//			preparedStatement.setTimestamp(9, Timestamp.valueOf(LocalDateTime.now()));
 
 			preparedStatement.executeUpdate();
 
@@ -89,7 +86,6 @@ public class PatientRoutingService implements PatientDAO {
 			preparedStatement.setString(6, patient.getConditionStatus().name());
 			preparedStatement.setInt(7, patient.getTriage_score());
 			preparedStatement.setString(8, patient.getDoctor_name());
-//			preparedStatement.setTimestamp(9, Timestamp.valueOf(LocalDateTime.now()));
 
 			preparedStatement.executeUpdate();
 
