@@ -1,0 +1,11 @@
+# Excluded Packages and Files
+/src/main/java/com/entity/
+/src/main/java/com/main/
+/src/main/resources/hibernate.cfg.xml
+
+# Standard Java/Maven Ignores
+/target/
+.classpath
+.project
+.settings/
+*.class
