@@ -84,7 +84,7 @@ public class ProcessingSummary {
 
 	public static void showResult() {
 		System.out.println("PROCESSING SUMMARY");
-		System.out.println("---------------------------------------");
+		System.out.println("-----------------------------");
 		System.out.println("Total Pending Records : " + getTotalRecords());
 		System.out.println("Critical Care         : " + getCriticalCareCount());
 		System.out.println("General Care          : " + getGeneralCareCount());
