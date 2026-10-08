@@ -84,7 +84,8 @@ public class BusinessLogic {
 			System.out.println("----------------------------------------");
 			flag = true;
 		}
-		System.out.println(
-				"Patient " + patient.getPatient_id() + " -> " + status + " -> " + ProcessingSummary.getErrorMessages());
+		System.out.print("Patient " + patient.getPatient_id() + " -> " + status + " -> " );
+		ProcessingSummary.getErrorMessages().forEach(err->System.out.print(err));
+		System.out.println();
 	}
 }
